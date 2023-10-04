@@ -10,6 +10,9 @@ import Home from './components/Home';
 import Register from './components/Register';
 import Login from './components/Login';
 import AuthProvider from './contextProvider/AuthProvider';
+import Orders from './components/Orders';
+import PrivateRoute from './routes/PrivateRoute';
+import Profile from './components/Profile';
 
 const router = createBrowserRouter([
   {
@@ -27,6 +30,15 @@ const router = createBrowserRouter([
       {
         path: '/login',
         element: <Login></Login>
+      },
+      {
+        path: '/orders',
+        element: <PrivateRoute><Orders></Orders></PrivateRoute>
+        // [note: here Orders is the children of PrivateRoute and it is used in PrivateRoute component as a perameter named 'children'.] 
+      },
+      {
+        path: '/profile',
+        element: <PrivateRoute><Profile></Profile></PrivateRoute>
       }
     ]
   },
